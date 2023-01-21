@@ -1,0 +1,16 @@
+server:
+  port: 8082
+  
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: sb_1
+        uri:  http://localhost:8081/
+        predicates:
+        - Path=/sb_1/**
+      - id: sb_2
+        uri:  http://localhost:8080/
+        predicates:
+        - Path=/sb_2/**
+          

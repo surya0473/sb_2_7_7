@@ -1,0 +1,33 @@
+server:
+  port: 8085  #default port where the service will be started
+ 
+eureka:     #tells about the Eureka server details and its refresh time
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+
+spring:   
+  application:
+    name: config-service 
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/surya0473/sb_2_7_7.git
+  boot:
+    admin:
+      client:
+        url:
+        - http://localhost:8084
+   
+management:
+  info:
+    env:
+      enabled: true
